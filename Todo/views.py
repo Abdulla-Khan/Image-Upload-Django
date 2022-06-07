@@ -32,11 +32,3 @@ class DeleteTodoAPIView(DestroyAPIView):
     """This endpoint allows for deletion of a specific Todo from the database"""
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
-
-
-class YourModelView(ListAPIView):
-    def get(self, request, format=None):
-        queryset = Todo.objects.all()
-        serializer = TodoSerializer(queryset, context={"request":
-                                                       request}, many=True)
-        return Response(serializer.data)
